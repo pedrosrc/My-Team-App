@@ -1,12 +1,12 @@
 import axios from 'axios'
 import { useState } from 'react'
-//import {useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import './auth.css'
 
 export default function Auth() {
 
     const [apiKey, setApiKey] = useState<string>('')
-    //const navigate = useNavigate();
+    const navigate = useNavigate();
 
     async function fetchData() {
 
@@ -17,12 +17,19 @@ export default function Auth() {
             }
         })
         .then(response =>{
-            console.log(response.data)
-
+            const userData = response.data.response.account
+            const data = {
+                email: userData.email,
+                firstname: userData.firstname,
+                key: apiKey
+            }
+            localStorage.setItem('@myTeam', JSON.stringify(data));
+            navigate('/dashboard')
+               
         })
         .catch((error)=>{
             console.log(error)
-            alert('Error')
+            alert('Key Invalida')
         })
         
     }
