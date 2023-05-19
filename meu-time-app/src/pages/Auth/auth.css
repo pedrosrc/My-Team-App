@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
 .container{
     background-color: #1A72B1;
     width: 100%;
@@ -16,6 +18,9 @@
 }
 .container h1{
     font-size: 3em;
+    display: flex;
+    font-family: 'Alfa Slab One', Arial, Helvetica, sans-serif;
+    align-items: center;
 }
 .section_key{
     background-color:#073A72 ;
@@ -69,4 +74,12 @@
     color: #fff;
     cursor: pointer;
     transition: .4s;
+}
+.container p a{
+    color: #073A72;
+    text-decoration: none;
+}
+.container p a:hover{
+    color: black;
+    text-decoration: dotted;
 }

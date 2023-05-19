@@ -1,0 +1,43 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+.bar{
+    background: rgb(7,58,114);
+    background: linear-gradient(90deg, rgba(7,58,114,1) 0%, rgba(26,114,177,1) 63%);
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+.bar h1{
+    
+    font-family: 'Alfa Slab One', Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: auto;
+    
+}
+.bar a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: normal;
+    display: flex;
+    align-items: center;
+}
+.bar button{
+    background-color: transparent;
+    border: none;
+    display: block;
+    cursor: pointer;
+    margin: 5px;
+    border-radius: 50%;
+}
+
+.bar button svg{
+    border-radius: 50%;
+    padding: 10px;
+    transition:.4s;
+    
+}
+.bar button svg:hover{
+    background-color: #073A72 ;
+}

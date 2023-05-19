@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState } from 'react'
 import {useNavigate} from 'react-router-dom'
+import {BiFootball} from 'react-icons/bi'
 import './auth.css'
 
 export default function Auth() {
@@ -36,7 +37,7 @@ export default function Auth() {
 
     return (
         <div className="container">
-            <h1>Meu Time</h1>
+            <h1>Meu Time <BiFootball color={'#fff'}/> </h1>
             <h3>Veja Dados das melhores ligas do mundo!</h3>
             <div className="section_key">
                 <h4>Coloque sua key para ter acesso a plataforma</h4>
@@ -46,7 +47,7 @@ export default function Auth() {
                     <button onClick={fetchData}>Enviar</button>
                 </div>
             </div>
-            <p>Nao tem conta? Cadastre-se</p>
+            <p>Nao tem conta? <a href="https://dashboard.api-football.com/register" target='_blank'>Cadastra-se</a></p>
         </div>
     )
 }
