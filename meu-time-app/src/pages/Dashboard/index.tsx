@@ -29,6 +29,7 @@ export default function Dashboard() {
                 .then(response => {
                     setDados(response.data.response)
                     setCountriesToShow(response.data.response.slice(0, visibleCountries))
+                    console.log(response.data.response.slice(0, visibleCountries))
 
                 })
                 .catch((error) => {
@@ -68,7 +69,7 @@ export default function Dashboard() {
                 
             {searchResult && 
             <div key={searchResult.id} className="countrie">
-                <Link to={`/leagues/${searchResult.code}`}>
+                <Link to={`/leagues/${searchResult.name}`}>
                     <img src={searchResult.flag} alt="poster" />
                     <br />
                     <strong>{searchResult.name}</strong>
