@@ -13,9 +13,9 @@ export default function Nav(){
         <Routes>
             <Route path="/" element={<Auth/>}/>
             <Route path="/dashboard" element={<Private> <Dashboard/> </Private>}/>
-            <Route path="/leagues/:country" element={<Private> <Leagues/> </Private>} />
-            <Route path="/seasons/:country/:id" element={<Private> <Seasons/> </Private>} />
-            <Route path="/teams/:country/:id/:season" element={<Private> <Teams/> </Private>} />
+            <Route path="/seasons/:id" element={<Private> <Seasons/> </Private>} />
+            <Route path="/leagues/:id/:season" element={<Private> <Leagues/> </Private>} />
+            <Route path="/teams/:id/:season/:list" element={<Private> <Teams/> </Private>} />
             <Route path="/team/:id" element={<Private> <Team/> </Private>} />
             <Route path="*" element={ <Private> <NotFound/> </Private>} />
         </Routes>

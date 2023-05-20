@@ -1,15 +1,16 @@
 import {useState, useEffect} from 'react'
 import axios from 'axios'
-import { useParams, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import NavBar from '../../components/NavBar'
 
 import './seasons.css'
 export default function Seasons(){
 
-    const {country} = useParams();
-    const {id} = useParams()
+    
     const [apiKey, setApiKey] = useState<any>('')
     const [dataSeason , setDataSeason] = useState<any[]>([])
+    const {id} = useParams();
     
     useEffect(() => {
         async function loadSeasons() {
@@ -18,19 +19,15 @@ export default function Seasons(){
             const keyUSer = (JSON.parse(dataLocal))
             setApiKey(keyUSer.key)
             //console.log(apiKey)
-            await axios.get(`https://v3.football.api-sports.io/leagues?country=${country}`, {
+            await axios.get(`https://v3.football.api-sports.io/leagues/seasons`, {
                 headers: {
                     "x-rapidapi-key": `${apiKey}`,
                     "x-rapidapi-host": "v3.football.api-sports.io"
                 },
-                params:{
-                    country: `${country}`,
-                    id: `${id}`
-                }
+                
             })
                 .then(response => {
-                    console.log(response.data.response)
-                    setDataSeason(response.data.response)
+                    setDataSeason(response.data.response.slice(0,15))
                 })
                 .catch((error) => {
                     console.log(error)
@@ -45,11 +42,11 @@ export default function Seasons(){
             <NavBar/>
             <h2>Selecione a temporada</h2>
             <div className="section_season">
-                {dataSeason.map((season)=>{
+                {dataSeason.map((season, index)=>{
                     return(
-                        <div key={season.id}>
-                            <Link to={`/teams/${country}/${id}/${season.season.year}`}>
-                                <strong>{season.season.year}</strong>
+                        <div key={index} className='season'>
+                            <Link to={`/leagues/${id}/${season}`}>
+                               <strong>Temporada:{season}/{season+1}</strong>
                             </Link>
                         </div>
                     )

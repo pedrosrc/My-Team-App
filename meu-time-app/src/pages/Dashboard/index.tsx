@@ -29,8 +29,6 @@ export default function Dashboard() {
                 .then(response => {
                     setDados(response.data.response)
                     setCountriesToShow(response.data.response.slice(0, visibleCountries))
-                    console.log(response.data.response.slice(0, visibleCountries))
-
                 })
                 .catch((error) => {
                     console.log(error)
@@ -78,7 +76,7 @@ export default function Dashboard() {
             {countriesToShow.map((countries) => {
                     return (
                         <div key={countries.id} className="countrie">
-                            <Link to={`/leagues/${countries.code}`}>
+                            <Link to={`/seasons/${countries.name}`}>
                                 <img src={countries.flag} alt="poster" />
                                 <br />
                                 <strong>{countries.name}</strong>

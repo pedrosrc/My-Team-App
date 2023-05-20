@@ -6,9 +6,10 @@ import './teams.css'
 export default function Teams(){
 
 
-    const {country} = useParams();
+    
     const {id} = useParams()
     const {season} = useParams();
+    const {list} = useParams();
     const [apiKey, setApiKey] = useState<any>('')
     const [dataTeams , setDataTeams] = useState<any[]>([])
     
@@ -25,13 +26,13 @@ export default function Teams(){
                     "x-rapidapi-host": "v3.football.api-sports.io"
                 },
                 params:{
-                    country: `${country}`,
-                    league: `${id}`,
+                    country: `${id}`,
+                    league: `${list}`,
                     season: `${season}`
                 }
             })
                 .then(response => {
-                    console.log(response.data.response)
+                    console.log(response.data)
                     setDataTeams(response.data.response)
                 })
                 .catch((error) => {
@@ -46,13 +47,20 @@ export default function Teams(){
         <div className="container_teams">
             <NavBar/>
             <h2>Selecione o time</h2>
-            {dataTeams.map((teams)=>{
+            <div className='section_teams'>
+            {dataTeams.map((teams,index)=>{
                 return(
-                    <div key={teams.id}>
+                    <div key={index} className='teams'>
+                        <Link to={``}>
+                            <img src={teams.team.logo} alt="logo do time" />
+                            <strong>{teams.team.name}</strong>
+                        </Link>
                         
                     </div>
                 )
             })}
+            </div>
+            
         </div>
     )
 }

@@ -6,7 +6,8 @@ import './leagues.css'
 
 export default function Leagues(){
 
-    const {country} = useParams();
+    const {season} = useParams();
+    const {id} = useParams();
     const [apiKey, setApiKey] = useState<any>('')
     const [dataLeague, setDataLeague] = useState<any[]>([])
 
@@ -17,18 +18,19 @@ export default function Leagues(){
             const keyUSer = (JSON.parse(dataLocal))
             setApiKey(keyUSer.key)
             //console.log(apiKey)
-            await axios.get(`https://v3.football.api-sports.io/leagues?country=${country}`, {
+            await axios.get(`https://v3.football.api-sports.io/leagues?country=${id}`, {
                 headers: {
                     "x-rapidapi-key": `${apiKey}`,
                     "x-rapidapi-host": "v3.football.api-sports.io"
                 },
                 params:{
-                    country: `${country}`
+                    country: `${id}`,
+                    season: `${season}`
                 }
             })
                 .then(response => {
-                    console.log(response.data.response)
                     setDataLeague(response.data.response)
+                    console.log(response.data.response)
                 })
                 .catch((error) => {
                     console.log(error)
@@ -45,8 +47,8 @@ export default function Leagues(){
             <div className="section_leagues">
                 {dataLeague.map((league)=>{
                     return(
-                        <div key={league.id}>
-                            <Link to={`/seasons/${country}/${league.id}`}>
+                        <div key={league.id} className="league">
+                            <Link to={`/teams/${id}/${season}/${league.id}`}>
                                 <img src={league.league.logo} alt="Logo da liga" />
                                 <strong>{league.league.name}</strong>
                             </Link>
