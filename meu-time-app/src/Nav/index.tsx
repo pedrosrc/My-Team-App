@@ -16,7 +16,7 @@ export default function Nav(){
             <Route path="/seasons/:id" element={<Private> <Seasons/> </Private>} />
             <Route path="/leagues/:id/:season" element={<Private> <Leagues/> </Private>} />
             <Route path="/teams/:id/:season/:list" element={<Private> <Teams/> </Private>} />
-            <Route path="/team/:id" element={<Private> <Team/> </Private>} />
+            <Route path="/team/:id/:season/:list/:info" element={<Private> <Team/> </Private>} />
             <Route path="*" element={ <Private> <NotFound/> </Private>} />
         </Routes>
 

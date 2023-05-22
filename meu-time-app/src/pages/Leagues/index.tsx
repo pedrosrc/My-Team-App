@@ -48,7 +48,7 @@ export default function Leagues(){
                 {dataLeague.map((league)=>{
                     return(
                         <div key={league.id} className="league">
-                            <Link to={`/teams/${id}/${season}/${league.id}`}>
+                            <Link to={`/teams/${id}/${season}/${league.league.id}`}>
                                 <img src={league.league.logo} alt="Logo da liga" />
                                 <strong>{league.league.name}</strong>
                             </Link>

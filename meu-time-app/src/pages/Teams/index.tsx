@@ -51,7 +51,7 @@ export default function Teams(){
             {dataTeams.map((teams,index)=>{
                 return(
                     <div key={index} className='teams'>
-                        <Link to={``}>
+                        <Link to={`/team/${id}/${season}/${list}/${teams.team.id}`}>
                             <img src={teams.team.logo} alt="logo do time" />
                             <strong>{teams.team.name}</strong>
                         </Link>
