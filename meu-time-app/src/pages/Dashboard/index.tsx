@@ -36,7 +36,7 @@ export default function Dashboard() {
 
         }
         loadData();
-    }, [visibleCountries])
+    }, [visibleCountries, countriesToShow])
 
 
     const handleSearch = () => {
@@ -67,7 +67,7 @@ export default function Dashboard() {
                 
             {searchResult && 
             <div key={searchResult.id} className="countrie">
-                <Link to={`/leagues/${searchResult.name}`}>
+                <Link to={`/seasons/${searchResult.name}`}>
                     <img src={searchResult.flag} alt="poster" />
                     <br />
                     <strong>{searchResult.name}</strong>

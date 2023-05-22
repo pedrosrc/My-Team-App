@@ -41,7 +41,7 @@ export default function Teams(){
 
         }
         loadSeasons();
-    }, [])
+    }, [dataTeams])
 
     return(
         <div className="container_teams">

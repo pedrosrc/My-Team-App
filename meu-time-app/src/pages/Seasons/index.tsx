@@ -35,7 +35,7 @@ export default function Seasons(){
 
         }
         loadSeasons();
-    }, [])
+    }, [dataSeason])
 
     return(
         <div className="container_seasons">

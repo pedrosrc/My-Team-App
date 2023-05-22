@@ -1,18 +1,20 @@
 import axios from "axios";
 import { useEffect, useState} from "react"
 import { useParams } from "react-router-dom";
+import { Chart } from "react-google-charts";
 
-export default function Lineup(){
+
+export default function Statistics() {
+
     const { season } = useParams();
     const { list } = useParams();
     const { info } = useParams();
     const [apiKey, setApiKey] = useState<any>('')
-    const [dataLine, setDataLine] = useState<any[]>([])
+    const [statisticsData, setStatisticsData] = useState<any[]>([])
 
+   
     useEffect(() => {
-
-
-        async function loadLineup() {
+        async function loadStatistics() {
 
             const dataLocal: any = localStorage.getItem('@myTeam');
             const keyUSer = (JSON.parse(dataLocal))
@@ -30,28 +32,30 @@ export default function Lineup(){
                 }
             })
                 .then((response) => {
-                    setDataLine(response.data.response.lineups)
-                    console.log(response.data.response.lineups)
+                   
+                    setStatisticsData(response.data.response.goals)
+                    console.log(response.data.response.goals)
                 })
                 .catch((error) => {
                     console.log(error)
                 })
 
         }
-        loadLineup();
+        loadStatistics();
     }, [])
-    return(
-        <div>
-             {dataLine.map((lineup, index) =>{
-                const maxPlayed:any = Math.max(...lineup.map((lineup:any) => lineup.played));
-                const maxPlayedLineup:any = lineup.find((lineup:any) => lineup.played === maxPlayed);
-                console.log(maxPlayedLineup.formation)
-                return (
-                    <div key={index} className="section_lineup">
-                        <strong>Formação: {maxPlayedLineup.formation}</strong>
-                    </div>
-                )
-            })}
+
+    
+    return (
+        <div className="container_lineup">
+            <h3>Resultados</h3>
+            
+            <h3>Estasticas</h3>
+            <Chart
+            chartType="PieChart"
+            data={statisticsData}
+            width={"100%"}
+            height={"400px"}/>
+
         </div>
     )
 }

@@ -17,7 +17,6 @@ export default function Leagues(){
             const dataLocal: any = localStorage.getItem('@myTeam');
             const keyUSer = (JSON.parse(dataLocal))
             setApiKey(keyUSer.key)
-            //console.log(apiKey)
             await axios.get(`https://v3.football.api-sports.io/leagues?country=${id}`, {
                 headers: {
                     "x-rapidapi-key": `${apiKey}`,
@@ -38,7 +37,7 @@ export default function Leagues(){
 
         }
         loadLeagues();
-    }, [])
+    }, [dataLeague])
 
     return(
         <div className="container_leagues">

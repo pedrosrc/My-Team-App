@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom";
-import './players.css'
+import './team.css'
 export default function Players(){
 
     
@@ -39,6 +39,7 @@ export default function Players(){
         }
         loadPlayers();
     }, [])
+    
     return(
         <div className="container_player">
             {dataPlayers.map((player, index)=>{
