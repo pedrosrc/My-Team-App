@@ -44,7 +44,7 @@ export default function Auth() {
                 <div className="form">
                     <span>Key:</span>
                     <input type="text" placeholder="Digite sua Key" onChange={(e) => setApiKey(e.target.value)} />
-                    <button onClick={fetchData}>Enviar</button>
+                    <button onClick={fetchData}>Entrar</button>
                 </div>
             </div>
             <p>Nao tem conta? <a href="https://dashboard.api-football.com/register" target='_blank'>Cadastra-se</a></p>

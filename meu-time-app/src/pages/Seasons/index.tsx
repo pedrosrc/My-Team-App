@@ -8,34 +8,49 @@ import './seasons.css'
 export default function Seasons(){
 
     
-    const [apiKey, setApiKey] = useState<any>('')
+    
     const [dataSeason , setDataSeason] = useState<any[]>([])
+    const [loading, setLoading] = useState(true)
     const {id} = useParams();
+    const dataLocal: any = localStorage.getItem('@myTeam');
+    const keyUSer = (JSON.parse(dataLocal))
+   
     
     useEffect(() => {
+        
+        
         async function loadSeasons() {
-            
-            const dataLocal: any = localStorage.getItem('@myTeam');
-            const keyUSer = (JSON.parse(dataLocal))
-            setApiKey(keyUSer.key)
-            //console.log(apiKey)
+        
             await axios.get(`https://v3.football.api-sports.io/leagues/seasons`, {
                 headers: {
-                    "x-rapidapi-key": `${apiKey}`,
+                    "x-rapidapi-key": `${keyUSer.key}`,
                     "x-rapidapi-host": "v3.football.api-sports.io"
                 },
                 
             })
-                .then(response => {
-                    setDataSeason(response.data.response.slice(0,15))
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
-
+            .then((response)=>{
+               setDataSeason(response.data.response.slice(0,15));
+                setLoading(false); 
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
         }
         loadSeasons();
-    }, [dataSeason])
+        return ()=>{
+
+        }
+
+    }, []);
+
+    if(loading){
+        return(
+            <div className="container_seasons">
+                <NavBar/>
+                <h2>Carregando...</h2>
+            </div>
+        )
+    }
 
     return(
         <div className="container_seasons">

@@ -8,18 +8,17 @@ export default function Leagues(){
 
     const {season} = useParams();
     const {id} = useParams();
-    const [apiKey, setApiKey] = useState<any>('')
     const [dataLeague, setDataLeague] = useState<any[]>([])
+    const dataLocal: any = localStorage.getItem('@myTeam');
+    const keyUSer = (JSON.parse(dataLocal))
 
     useEffect(() => {
+        
         async function loadLeagues() {
-            
-            const dataLocal: any = localStorage.getItem('@myTeam');
-            const keyUSer = (JSON.parse(dataLocal))
-            setApiKey(keyUSer.key)
+   
             await axios.get(`https://v3.football.api-sports.io/leagues?country=${id}`, {
                 headers: {
-                    "x-rapidapi-key": `${apiKey}`,
+                    "x-rapidapi-key": `${keyUSer.key}`,
                     "x-rapidapi-host": "v3.football.api-sports.io"
                 },
                 params:{
@@ -27,17 +26,17 @@ export default function Leagues(){
                     season: `${season}`
                 }
             })
-                .then(response => {
+            .then(response => {
                     setDataLeague(response.data.response)
                     console.log(response.data.response)
-                })
-                .catch((error) => {
+            })
+            .catch((error) => {
                     console.log(error)
-                })
+            })
 
         }
         loadLeagues();
-    }, [dataLeague])
+    }, [])
 
     return(
         <div className="container_leagues">

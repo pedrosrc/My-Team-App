@@ -6,21 +6,16 @@ export default function Lineup(){
     const { season } = useParams();
     const { list } = useParams();
     const { info } = useParams();
-    const [apiKey, setApiKey] = useState<any>('')
+    const dataLocal: any = localStorage.getItem('@myTeam');
+    const keyUSer = (JSON.parse(dataLocal))
     const [dataLine, setDataLine] = useState<any[]>([])
 
     useEffect(() => {
 
-
         async function loadLineup() {
-
-            const dataLocal: any = localStorage.getItem('@myTeam');
-            const keyUSer = (JSON.parse(dataLocal))
-            setApiKey(keyUSer.key)
-            //console.log(apiKey)
             await axios.get(`https://v3.football.api-sports.io/teams/statistics`, {
                 headers: {
-                    "x-rapidapi-key": `${apiKey}`,
+                    "x-rapidapi-key": `${keyUSer.key}`,
                     "x-rapidapi-host": "v3.football.api-sports.io"
                 },
                 params: {
@@ -40,6 +35,7 @@ export default function Lineup(){
         }
         loadLineup();
     }, [])
+    
     return(
         <div>
              {dataLine.map((lineup, index) =>{

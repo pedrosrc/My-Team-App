@@ -10,19 +10,16 @@ export default function Teams(){
     const {id} = useParams()
     const {season} = useParams();
     const {list} = useParams();
-    const [apiKey, setApiKey] = useState<any>('')
     const [dataTeams , setDataTeams] = useState<any[]>([])
+    const dataLocal: any = localStorage.getItem('@myTeam');
+    const keyUSer = (JSON.parse(dataLocal))
     
     useEffect(() => {
+        
         async function loadSeasons() {
-            
-            const dataLocal: any = localStorage.getItem('@myTeam');
-            const keyUSer = (JSON.parse(dataLocal))
-            setApiKey(keyUSer.key)
-            //console.log(apiKey)
             await axios.get(`https://v3.football.api-sports.io/teams`, {
                 headers: {
-                    "x-rapidapi-key": `${apiKey}`,
+                    "x-rapidapi-key": `${keyUSer.key}`,
                     "x-rapidapi-host": "v3.football.api-sports.io"
                 },
                 params:{
@@ -41,7 +38,7 @@ export default function Teams(){
 
         }
         loadSeasons();
-    }, [dataTeams])
+    }, [])
 
     return(
         <div className="container_teams">

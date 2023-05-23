@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
 
-.container_team h2,h3 {
+.container_team h2,
+h3 {
     text-align: center;
     color: #000;
     margin: 15px;
     font-size: 2em;
     justify-content: center;
-    font-family: 'Oswald',Arial, Helvetica, sans-serif;
+    font-family: 'Oswald', Arial, Helvetica, sans-serif;
     font-weight: normal;
 }
-.container_team h3{
+
+.container_team h3 {
     font-size: 1.5em;
 }
-.container_player{
+
+.container_player {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -22,7 +25,8 @@
     justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
 }
-.section_player{
+
+.section_player {
     display: flex;
     padding: 20px;
     flex-direction: column;
@@ -36,15 +40,49 @@
     border-radius: 10px;
     cursor: pointer;
 }
-.section_player:hover{
-    transform: translate(-5px,-3px);
+
+.section_player:hover {
+    transform: translate(-5px, -3px);
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
-.section_player strong{
-    font-family: 'Montserrat',Arial, Helvetica, sans-serif;
+
+.section_player strong {
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
 }
-.section_player p{
+.section_player p {
     color: #000;
-    font-family: 'Montserrat',Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', Arial, Helvetica, sans-serif;
     text-align: justify;
+}
+.section_fixture {
+    border-collapse: collapse;
+    color: #333;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    text-align: left;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.section_fixture thead th {
+    background-color: rgb(7,58,114);
+    color: #fff;
+    font-weight: bold;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
+}
+.section_fixture tbody td {
+    color: #000000;
+    text-align: center;
+    padding: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top: 1px solid #fff;
+    border-bottom: 1px solid #ccc;
 }

@@ -10,13 +10,13 @@ export default function Team(){
             <NavBar/>
             <h2>Informações </h2>
             <h3>Lista de Jogadores</h3>
-            <Players/>
+            
             <h3>A formação mais utilizada na Temporada</h3>
-            <Lineup/>
+            
             <h3>Resultados na Temporada</h3>
             <Fixture/>
             <h3>Estatísticas</h3>
-            <Statistics/>
+            
         </div>
     )
 }

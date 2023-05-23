@@ -8,19 +8,16 @@ export default function Players(){
     const {season} = useParams();
     const {list} = useParams();
     const {info} = useParams();
-    const [apiKey, setApiKey] = useState<any>('')
     const [dataPlayers, setDataPlayers] = useState<any[]>([])
+    const dataLocal: any = localStorage.getItem('@myTeam');
+    const keyUSer = (JSON.parse(dataLocal))
 
     useEffect(() => {
         async function loadPlayers() {
-            
-            const dataLocal: any = localStorage.getItem('@myTeam');
-            const keyUSer = (JSON.parse(dataLocal))
-            setApiKey(keyUSer.key)
-            //console.log(apiKey)
+             
             await axios.get(`https://v3.football.api-sports.io/players`, {
                 headers: {
-                    "x-rapidapi-key": `${apiKey}`,
+                    "x-rapidapi-key": `${keyUSer.key}`,
                     "x-rapidapi-host": "v3.football.api-sports.io"
                 },
                 params:{
